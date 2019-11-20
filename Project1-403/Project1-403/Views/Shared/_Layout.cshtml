@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - What's On The Table</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,6 +25,11 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Reviews", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
