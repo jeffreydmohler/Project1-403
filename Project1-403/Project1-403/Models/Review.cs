@@ -19,7 +19,7 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Overall Rating")]
-        public float ReviewOverallRating { get; set; }
+        public double ReviewOverallRating { get; set; }
 
         [Required]
         [Display(Name = "Is restaruant date friendly?")]
@@ -28,7 +28,7 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Cleanliness rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Restaurant Cleanliness")]
-        public float ReviewCleanliness { get; set; }
+        public double ReviewCleanliness { get; set; }
 
         [Required]
         [Display(Name = "Review Date")]

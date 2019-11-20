@@ -58,5 +58,31 @@ namespace Project1_403.Controllers
                 return View(newReview);
             }
         }
+
+        public ActionResult EditReview(int iCode)
+        {
+            ViewBag.ListRests = RestaurantsController.lstRestaurant;
+
+            Review oReview = lstReviews.Find(x => x.ReviewCode == iCode);
+
+            return View(oReview);
+        }
+
+        [HttpPost]
+        public ActionResult EditReview(Review myReview)
+        {
+            var obj = lstReviews.FirstOrDefault(x => x.ReviewCode == myReview.ReviewCode);
+
+            if (obj != null)
+            {
+                obj.ReviewCleanliness = myReview.ReviewCleanliness;
+                obj.RestCode = myReview.RestCode;
+                obj.ReviewDate = myReview.ReviewDate;
+                obj.ReviewDateFriendly = myReview.ReviewDateFriendly;
+                obj.ReviewOverallRating = myReview.ReviewOverallRating;
+                obj.ReviewDesc = myReview.ReviewDesc;
+            }
+            return RedirectToAction("ShowReviews", new { iCode = myReview.RestCode });
+        }
     }
 }
