@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 namespace Project1_403.Controllers
 {
-    public class ResturantController : Controller
+    public class RestaurantsController : Controller
     {
         public static List<Restaurant> lstRestaurant = new List<Restaurant>()
         {

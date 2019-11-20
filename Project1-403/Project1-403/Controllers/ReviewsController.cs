@@ -26,16 +26,17 @@ namespace Project1_403.Controllers
         // GET: Reviews
         public ActionResult ShowReviews(int iCode)
         {
-            Restaurant oRestaurant = ResturantController.lstRestaurant.Find(x => x.RestCode == iCode);
+            Restaurant oRestaurant = RestaurantsController.lstRestaurant.Find(x => x.RestCode == iCode);
           
             var model = Tuple.Create<Restaurant, IEnumerable<Review>>(oRestaurant, lstReviews);
 
             return View(model);
         }
 
-        public ActionResult AddReview()
+        public ActionResult AddReview(int iCode)
         {
-            ViewBag.ListRests = ResturantController.lstRestaurant;
+
+            ViewBag.ListRests = RestaurantsController.lstRestaurant;
 
             return View();
         }
@@ -43,15 +44,16 @@ namespace Project1_403.Controllers
         [HttpPost]
         public ActionResult AddReview(Review newReview)
         {
+            newReview.ReviewCode = (lstReviews.Count() + 1);
+
             if (ModelState.IsValid)
             {
-                newReview.ReviewCode = (lstReviews.Count() + 1);
                 lstReviews.Add(newReview);
-                return RedirectToAction("ShowReviews");
+                return RedirectToAction("ShowReviews", new { iCode = newReview.RestCode });
             }
             else
             {
-                ViewBag.ListRests = ResturantController.lstRestaurant;
+                ViewBag.ListRests = RestaurantsController.lstRestaurant;
 
                 return View(newReview);
             }

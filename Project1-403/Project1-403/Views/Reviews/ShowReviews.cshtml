@@ -9,7 +9,7 @@
 <div>
     <h4>@Html.DisplayFor(model => model.Item1.RestName)</h4>
     <hr />
-    @Html.ActionLink("Add a Review", "AddReview")
+    @Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })
     <dl class="dl-horizontal">
         <dt hidden>
             @Html.DisplayFor(model => model.Item1.RestCode)
