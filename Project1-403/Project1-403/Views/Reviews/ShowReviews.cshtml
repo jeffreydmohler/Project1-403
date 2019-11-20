@@ -4,60 +4,34 @@
     ViewBag.Title = "ShowReviews";
 }
 
-<h2>Restaurant Reviews</h2>
+@{ var datef = "";
+    if (Model.Item1.RestDateFriendly == true)
+    {
+        datef = "Yes";
+    }
+    else
+    {
+        datef = "No";
+    }
 
-<div>
-    <h4>@Html.DisplayFor(model => model.Item1.RestName)</h4>
-    <hr />
-    @Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })
-    <dl class="dl-horizontal">
-        <dt hidden>
-            @Html.DisplayFor(model => model.Item1.RestCode)
-        </dt>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Item1.RestOverallRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item1.RestOverallRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Item1.RestDateFriendly)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item1.RestDateFriendly)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Item1.RestCleanliness)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item1.RestCleanliness)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Item1.RestTypeCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item1.RestTypeCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item1.RestFoodTypeCode)
-        </dd>
-
-    </dl>
+<div class="jumbotron">
+    <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
+    <div class="col-lg-offset-1">
+        @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
+        @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
+        @Html.DisplayFor(model => model.Item1.RestOverallRating) @Html.DisplayNameFor(model => model.Item1.RestOverallRating) <br />
+        @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
+        @Html.DisplayFor(model => model.Item1.RestCleanliness) @Html.DisplayNameFor(model => model.Item1.RestCleanliness)
+    </div>
 </div>
-
+<div>
+   
+</div>
+<h2>Reviews</h2>
+<div class="col-sm-2 col-sm-offset-9 " style="text-align: right"><button class="btn-block">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
+<br /><br />
 <table class="table">
     <tr>
         <th>
@@ -65,7 +39,7 @@
         </th>
         <th>
             Overall Rating
-        </th>  
+        </th>
         <th>
             Date Friendly?
         </th>
@@ -77,32 +51,32 @@
         </th>
     </tr>
 
-        @foreach (var item in Model.Item2)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewOverallRating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewDateFriendly)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewCleanliness)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewDesc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+    @foreach (var item in Model.Item2)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewOverallRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDateFriendly)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewCleanliness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDesc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
     }
 
-    </table>
-    <p>
-        @Html.ActionLink("Back to All Restaurants", "Index", "Restaurants")
-    </p>
+</table>
+<p>
+    @Html.ActionLink("Back to All Restaurants", "Index", "Restaurants")
+</p>
