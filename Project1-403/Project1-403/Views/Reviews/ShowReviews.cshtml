@@ -1,0 +1,62 @@
+﻿@model Tuple<Project1_403.Models.Restaurant, IEnumerable<Project1_403.Models.Review>>
+
+@{
+    ViewBag.Title = "ShowReviews";
+}
+
+<h2>Restaurant Reviews</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Item1.RestName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt hidden>
+            @Html.DisplayFor(model => model.Item1.RestCode)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RestOverallRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RestOverallRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RestDateFriendly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RestDateFriendly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RestCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RestCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RestTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RestTypeCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item1.RestFoodTypeCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Add a Review", "AddReview") |
+    @Html.ActionLink("Back to List", "ShowRestaurants")
+</p>
