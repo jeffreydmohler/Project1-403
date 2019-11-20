@@ -11,32 +11,32 @@ namespace Project1_403.Controllers
     {
         public static List<Review> lstReviews = new List<Review>()
         {
-            new Review { ReviewCode = 1, RestCode = "", ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 2, RestCode = "", ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 3, RestCode = "", ReviewOverallRating = 5, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 4, RestCode = "", ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 5, RestCode = "", ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 6, RestCode = "", ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 7, RestCode = "", ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 8, RestCode = "", ReviewOverallRating = 1, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 9, RestCode = "", ReviewOverallRating = 4, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 1, RestCode = 1, ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 2, RestCode = 2, ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 3, RestCode = 3, ReviewOverallRating = 5, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 4, RestCode = 1, ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 5, RestCode = 2, ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 6, RestCode = 3, ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 7, RestCode = 1, ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 8, RestCode = 2, ReviewOverallRating = 1, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
+            new Review { ReviewCode = 9, RestCode = 3, ReviewOverallRating = 4, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
         };
 
 
         // GET: Reviews
-        public ActionResult ShowReviews()
+        public ActionResult ShowReviews(int iCode)
         {
+            Restaurant oRestaurant = ResturantController.lstRestaurant.Find(x => x.RestCode == iCode);
+          
+            var model = Tuple.Create<Restaurant, IEnumerable<Review>>(oRestaurant, lstReviews);
 
-            //var tuple = new Tuple.<Restaurant, Review>(lstRestaurants,lstReviews);
-            Restaurant newRestaurant = new Restaurant { RestAddress = "kasjdflk", RestAvgMealPrice = 66 };
-            var model = Tuple.Create<Restaurant, IEnumerable<Review>>(newRestaurant, lstReviews);
-
-            //return View(tuple);
             return View(model);
         }
 
         public ActionResult AddReview()
         {
+            ViewBag.ListRests = ResturantController.lstRestaurant;
+
             return View();
         }
 
@@ -51,7 +51,7 @@ namespace Project1_403.Controllers
             }
             else
             {
-                //ViewBag.ListRests = CallingsController.lstCallings;
+                ViewBag.ListRests = ResturantController.lstRestaurant;
 
                 return View(newReview);
             }

@@ -95,8 +95,8 @@
             @Html.DisplayFor(modelItem => item.RestZipCode)
         </td>
         <td>
-            @Html.ActionLink("See Reviews", "SeeReviews", new { iCode = item.RestCode }) |
-            @Html.ActionLink("Details", "Details", new { iCode = item.RestCode }) |
+            @Html.ActionLink("See Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null) |
+            @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
         </td>
     </tr>
 }

@@ -97,7 +97,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { iCode = item.ReviewCode }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
@@ -105,6 +104,5 @@
 
     </table>
     <p>
-         |
-        @Html.ActionLink("Back to List", "ShowRestaurants")
+        @Html.ActionLink("Back to All Restaurants", "Index", "Restaurants")
     </p>

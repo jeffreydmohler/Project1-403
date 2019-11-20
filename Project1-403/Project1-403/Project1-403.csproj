@@ -171,12 +171,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reviews\ShowReviews.cshtml" />
     <Content Include="Views\Reviews\AddReview.cshtml" />
-    <Content Include="Views\Resturant\Index.cshtml" />
-    <Content Include="Views\Resturant\Details.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\Restaurants\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Restaurants\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

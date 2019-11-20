@@ -13,9 +13,8 @@ namespace Project1_403.Models
         public int ReviewCode { get; set; }
 
         [Required]
-        [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant code must be 2 to 5 characters long.")]
         [Display(Name = "Restaurant Code")]
-        public string RestCode { get; set; }
+        public int RestCode { get; set; }
 
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
