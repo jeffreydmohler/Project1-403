@@ -7,50 +7,50 @@
 <h2>Restaurants</h2>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RestCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestOverallRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestDateFriendly)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestCleanliness)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestTypeCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestFoodTypeCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestAvgMealPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestState)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestZipCode)
-        </th>
-        <th></th>
-    </tr>
-
+<table class="table table-hover table-dark table-striped">
+   
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RestCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestOverallRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestDateFriendly)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestCleanliness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestTypeCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestFoodTypeCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestAvgMealPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestZipCode)
+            </th>
+            <th></th>
+        </tr>
     @foreach (var item in Model)
     {
         <tr>
