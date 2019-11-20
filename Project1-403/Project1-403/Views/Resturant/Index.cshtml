@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Project1_403.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestOverallRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestDateFriendly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestCleanliness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestTypeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestFoodTypeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestAvgMealPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestZipCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestOverallRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestDateFriendly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestTypeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("See Reviews", "SeeReviews", new { iCode = item.RestCode }) |
+            @Html.ActionLink("Details", "Details", new { iCode = item.RestCode }) |
+        </td>
+    </tr>
+}
+
+</table>

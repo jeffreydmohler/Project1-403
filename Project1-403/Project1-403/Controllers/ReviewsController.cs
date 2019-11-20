@@ -27,10 +27,12 @@ namespace Project1_403.Controllers
         public ActionResult ShowReviews()
         {
 
-            //var tuple = new Tuple<Restaurant, Review>(lstRestaurants,lstReviews);
+            //var tuple = new Tuple.<Restaurant, Review>(lstRestaurants,lstReviews);
+            Restaurant newRestaurant = new Restaurant { RestAddress = "kasjdflk", RestAvgMealPrice = 66 };
+            var model = Tuple.Create<Restaurant, IEnumerable<Review>>(newRestaurant, lstReviews);
 
             //return View(tuple);
-            return View();
+            return View(model);
         }
 
         public ActionResult AddReview()

@@ -9,6 +9,7 @@
 <div>
     <h4>@Html.DisplayFor(model => model.Item1.RestName)</h4>
     <hr />
+    @Html.ActionLink("Add a Review", "AddReview")
     <dl class="dl-horizontal">
         <dt hidden>
             @Html.DisplayFor(model => model.Item1.RestCode)
@@ -56,7 +57,54 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Add a Review", "AddReview") |
-    @Html.ActionLink("Back to List", "ShowRestaurants")
-</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Review Date
+        </th>
+        <th>
+            Overall Rating
+        </th>  
+        <th>
+            Date Friendly?
+        </th>
+        <th>
+            Cleanliness
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+
+        @foreach (var item in Model.Item2)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewOverallRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDateFriendly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { iCode = item.ReviewCode }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+    }
+
+    </table>
+    <p>
+         |
+        @Html.ActionLink("Back to List", "ShowRestaurants")
+    </p>

@@ -1,0 +1,122 @@
+﻿@model Project1_403.Models.Restaurant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RestCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestOverallRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestOverallRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestDateFriendly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestDateFriendly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestTypeCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestFoodTypeCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestFoodTypeCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestAvgMealPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestAvgMealPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestZipCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
