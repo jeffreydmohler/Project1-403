@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #5a0000;
+    color: black;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +23,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#homeimg {
+    border-radius: 60%;
+    max-width: 40%;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+    float:left
+}
+
+#homejumbo {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+}
+
+#homebox {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+    margin: .2em;
+    display: inline-block;
+    width: 32%;
+    align-self: center;
 }
