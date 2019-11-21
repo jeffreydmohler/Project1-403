@@ -39,11 +39,13 @@
 
    
     <br />
-    <span class="reviewtext1">Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong></span>
-    <br />
-    Cleanliness: @Html.DisplayFor(modelItem => item.ReviewCleanliness)
-    <br />
-    Date Friendly? @datef
+    <span class="reviewtext1">
+        Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
+        <br />
+        Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
+        <br />
+        Date Friendly? <strong> @datef</strong>
+    </span>
     <p class="col-lg-offset-1">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
     <div class="col-sm-offset-1">
 
