@@ -4,12 +4,19 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div id="detailsjumbo" class="jumbotron maintableparent">
+    <br />
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <h1 style="text-align: center; color: #FFFFF0; font-size: 50px;"> Details for @Html.DisplayFor(model => model.RestName)</h1>
+
+        </div>
+    </div>
+</div>
 
 <div>
-    <h4>Restaurant</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="container1">
         <dt>
             @Html.DisplayNameFor(model => model.RestCode)
         </dt>

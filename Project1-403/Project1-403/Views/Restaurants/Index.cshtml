@@ -1,44 +1,52 @@
-﻿@model IEnumerable<Project1_403.Models.Restaurant>
+﻿
+@model IEnumerable<Project1_403.Models.Restaurant>
 
-@{
-    ViewBag.Title = "Index";
-}
+    @{
+        ViewBag.Title = "Index";
+    }
+<div id="restjumbo" class="jumbotron maintableparent">
+    <br />
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <h1 style="text-align: right; color: #FFFFF0; font-size: 50px;"> Restaurants &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h1>
 
-<h2>Restaurants</h2>
-@*This changes the color of the bars*@
-<div style="background-color: lightgrey">
-    <table class="table table-dark table-striped">
+        </div>
+    </div>
+</div>
+    @*This changes the color of the bars*@
+    <div style="background-color: lightgrey">
+        <table class="table table-dark table-striped">
 
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RestCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestOverallRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestDateFriendly)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestCleanliness)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestTypeCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestFoodTypeCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestAvgMealPrice)
-            </th>
-            <th></th><th></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-           var datef = "";
+            <tr>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.RestName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestOverallRating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestDateFriendly)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestCleanliness)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestTypeCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestFoodTypeCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestAvgMealPrice)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                var datef = "";
                 if (item.RestDateFriendly == true)
                 {
                     datef = "Yes";
@@ -48,44 +56,42 @@
                     datef = "No";
                 }
 
-          
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestOverallRating)
-            </td>
-            <td>
-                @datef
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestCleanliness)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestTypeCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
-            </td>
-            <td>
-                <button class="btn-block">
-                    @Html.ActionLink("Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null)
-                </button>
-            </td>
-            <td>
-                <button class="btn-block">
-                    @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
-                </button>
-            </td>
-        </tr>
-        }
 
-    </table>
-</div>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestOverallRating)
+                    </td>
+                    <td>
+                        @datef
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestCleanliness)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestTypeCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+                    </td>
+                    <td>
+                        <button class="btn-block">
+                            @Html.ActionLink("Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null)
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-block">
+                            @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>

@@ -51,6 +51,35 @@ textarea {
     background-size: cover;
     margin-top: 10px;
 }
+#restjumbo {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+    margin-left: -5%;
+    margin-right: -5%;
+    text-align: center;
+    background-image: url('Images/Wonderful-Restaurant-Wallpaper.jpg');
+    background-position: center;
+    background-size: cover;
+    margin-top: 10px;
+}
+
+#detailsjumbo {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-color: black;
+    border-style: solid;
+    display: inline-block;
+    margin-left: -5%;
+    margin-right: -5%;
+    text-align: center;
+    background-image: url('Images/WsDu69.jpg');
+    background-position: center;
+    background-size: cover;
+    margin-top: 10px;
+}
 
 #homebox {
     background-color: #5a0000;

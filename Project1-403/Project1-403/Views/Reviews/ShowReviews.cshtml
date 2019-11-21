@@ -16,15 +16,19 @@
 
 }
 
-<div class="jumbotron">
-    <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
-    <div class="col-lg-offset-1" style="font-size: 17px;">
-        @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
-        @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
-        @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
-        @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
-        @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+<div id="homejumbo" class="jumbotron">
+    <div class="container h-100">
+        <div style="color:#FFFFF0">
+        <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
+        <div style="font-size: 17px; text-align: left">
+            @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
+            @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
+            @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
+            @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
+            @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+        </div>
     </div>
+</div>
 </div>
 <div>
 
