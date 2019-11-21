@@ -9,6 +9,11 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+h100 {
+    color: white;
+    font-size: 50px;
+    text-align: left;
+}
 body {
   margin: 0;
 }
@@ -4985,10 +4990,12 @@ a.badge:focus {
   margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
+  text-align: left;
 }
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;
+  text-align: left;
 }
 .jumbotron p {
   margin-bottom: 15px;
@@ -5020,6 +5027,7 @@ a.badge:focus {
   .jumbotron h1,
   .jumbotron .h1 {
     font-size: 63px;
+    text-align: left;
   }
 }
 .thumbnail {
