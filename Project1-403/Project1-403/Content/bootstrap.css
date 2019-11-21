@@ -1589,11 +1589,12 @@ pre code {
 
 .container1 {
     border: 2px solid black;
-    background-color: aqua;
+    background-color: #5a0000;
     border-radius: 5px;
     padding: 16px;
     padding-bottom: 16px;
     margin: 16px 0;
+    color: white;
 }
 
 .container1 button 
@@ -3483,8 +3484,15 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-block {
   display: block;
-  width: 100%;
+  width: 125px;
+  border-radius: 10px;
+  color: black;
 }
+
+.btn-block a {
+    color: black;
+}
+
 .btn-block + .btn-block {
   margin-top: 5px;
 }
@@ -3596,7 +3604,7 @@ tbody.collapse.in {
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: #fff;
+  color: black;
   text-decoration: none;
   background-color: #337ab7;
   outline: 0;
@@ -3604,7 +3612,7 @@ tbody.collapse.in {
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
-  color: #777;
+  color: black;
 }
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {

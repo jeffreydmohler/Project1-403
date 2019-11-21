@@ -21,16 +21,16 @@
     <div class="col-lg-offset-1" style="font-size: 17px;">
         @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
         @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
-        @Html.DisplayFor(model => model.Item1.RestOverallRating) @Html.DisplayNameFor(model => model.Item1.RestOverallRating) <br />
+        @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
         @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
-        @Html.DisplayFor(model => model.Item1.RestCleanliness) @Html.DisplayNameFor(model => model.Item1.RestCleanliness)
+        @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
     </div>
 </div>
 <div>
 
 </div>
 <h2>Reviews </h2>
-<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
+<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block" style="width: 175px;">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
 <br />
 
 @foreach (var item in Model.Item2)
@@ -51,10 +51,16 @@
     
     <div class="col-sm-offset-1">
 
-        <span>
-            <button>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
-            <button>@Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) </button>
-        </span>
+        <table class="col-sm-2 col-sm-offset-8 ">
+            <tr>
+                <td><button class="btn-block">@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
+                    </td>
+                <td><button class="btn-block">@Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) </button>
+                </td>
+                
+                
+            </tr>
+        </table>
         <span class="reviewtext2">
             @Html.DisplayFor(modelItem => item.ReviewDate)
         </span>

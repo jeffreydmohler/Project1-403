@@ -7,8 +7,8 @@
     <br />
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
-            <h100> What's on the Table?</h100>
-            <div class="searchbar">
+            <h1 style="text-align: left; color: white; font-size: 50px;"> What's on the Table?</h1>
+            <div class="searchbar" >
                 <input class="search_input" type="text" name="" placeholder="What's On The Menu?">
                 <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
             </div>
@@ -24,16 +24,16 @@
         <p>
             Stuff
         </p>
-        <p><button class="btn btn-default">@Html.ActionLink("Reviews >>", "ShowReviews", "Reviews")</button></p>
+        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Reviews", "ShowReviews", "Reviews")</button></p>
     </div>
     <div id="homebox" class="col-md-4 jumbotron">
         <h2>Add Review</h2>
         <p>Put in a review!</p>
-        <p><button class="btn btn-default">@Html.ActionLink("Reviews >>", "AddReview", "Reviews")</button></p>
+        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Review", "AddReview", "Reviews")</button></p>
     </div>
     <div id="homebox" class="col-md-3 jumbotron">
         <h2>Restaurants</h2>
         <p>Even more stuff</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Learn More", "AddReview", "Reviews")</button></p>
     </div>
 </div>

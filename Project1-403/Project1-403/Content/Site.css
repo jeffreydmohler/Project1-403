@@ -53,8 +53,8 @@ textarea {
 }
 
 #homebox {
-    background-color: #9F3DD7;
-    color: #9d9d9d;
+    background-color: #5a0000;
+    color: white;
     border-radius: 12px;
     border-color: black;
     border-style: solid;
@@ -76,24 +76,25 @@ textarea {
     margin-bottom: auto;
     margin-top: auto;
     height: 60px;
-    background-color: #353b48;
+    background-color: white;
     border-radius: 30px;
     padding: 10px;
+    width: 400px;
 }
 
 .search_input {
-    color: white;
+    color: black;
     border: 0;
     outline: 0;
     background: none;
-    width: 0;
+    width: 400px;
     line-height: 40px;
     transition: width 0.4s linear;
 }
 
 .searchbar:hover > .search_input {
     padding: 0 10px;
-    width: 450px;
+    width: 400px;
     transition: width 0.4s linear;
 }
 
