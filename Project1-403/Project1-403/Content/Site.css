@@ -99,8 +99,10 @@ textarea {
 }
 
 .searchbar:hover > .search_icon {
-    background: white;
     color: #e74c3c;
+    background-image: url('Images/magnifying-glass-icon_1000x1080.png');
+    background-position: center;
+    background-size: 40px;
 }
 
 .search_icon {
@@ -111,6 +113,10 @@ textarea {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color: white;
+    color: gray;
+    background-color: gray;
     text-decoration: none;
+    background-image: url('Images/magnifying-glass-icon_1000x1080.png');
+    background-position: center;
+    background-size: 40px;
 }
