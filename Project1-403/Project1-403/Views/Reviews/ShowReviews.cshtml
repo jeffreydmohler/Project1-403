@@ -18,7 +18,7 @@
 
 <div class="jumbotron">
     <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
-    <div class="col-lg-offset-1">
+    <div class="col-lg-offset-1" style="font-size: 17px;">
         @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
         @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
         @Html.DisplayFor(model => model.Item1.RestOverallRating) @Html.DisplayNameFor(model => model.Item1.RestOverallRating) <br />
@@ -41,12 +41,14 @@
     <br />
     <span class="reviewtext1">
         Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
-        <br />
+       &nbsp;
         Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
-        <br />
+       &nbsp;
         Date Friendly? <strong> @datef</strong>
+        <br />
+        <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
     </span>
-    <p class="col-lg-offset-1">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
+    
     <div class="col-sm-offset-1">
 
         <span>
@@ -60,51 +62,7 @@
 
 </div>
 }
-<table class="table">
-    <tr>
-        <th>
-            Review Date
-        </th>
-        <th>
-            Overall Rating
-        </th>
-        <th>
-            Date Friendly?
-        </th>
-        <th>
-            Cleanliness
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
 
-    @foreach (var item in Model.Item2)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewOverallRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewDateFriendly)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewCleanliness)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReviewDesc)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-
-</table>
 <p>
     @Html.ActionLink("Back to All Restaurants", "Index", "Restaurants")
 </p>
