@@ -5,10 +5,10 @@
 }
 
 <h2>Restaurants</h2>
+@*This changes the color of the bars*@
+<div style="background-color: lightsteelblue">
+    <table class="table table-hover table-dark table-striped">
 
-
-<table class="table table-hover table-dark table-striped">
-   
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.RestCode)
@@ -34,70 +34,57 @@
             <th>
                 @Html.DisplayNameFor(model => model.RestAvgMealPrice)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestCity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestState)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RestZipCode)
-            </th>
             <th></th>
         </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestOverallRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestDateFriendly)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestCleanliness)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestTypeCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestZipCode)
-            </td>
-            <td>
-                @Html.ActionLink("See Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null) |
-                @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
-            </td>
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+           var datef = "";
+                if (item.RestDateFriendly == true)
+                {
+                    datef = "Yes";
+                }
+                else
+                {
+                    datef = "No";
+                }
 
-</table>
+          
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestOverallRating)
+                </td>
+                <td>
+                    @datef
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestCleanliness)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestTypeCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+                </td>
+                <td>
+                    <button>
+                        @Html.ActionLink("See Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null)
+                    </button>
+
+                    <button>
+                        @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
