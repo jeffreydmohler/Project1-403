@@ -27,11 +27,37 @@
     </div>
 </div>
 <div>
-   
+
 </div>
-<h2>Reviews</h2>
-<div class="col-sm-2 col-sm-offset-9 " style="text-align: right"><button class="btn-block">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
-<br /><br />
+<h2>Reviews </h2>
+<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
+<br />
+
+@foreach (var item in Model.Item2)
+{
+<div class="container1">
+
+   
+    <br />
+    <span class="reviewtext1">Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong></span>
+    <br />
+    Cleanliness: @Html.DisplayFor(modelItem => item.ReviewCleanliness)
+    <br />
+    Date Friendly? @datef
+    <p class="col-lg-offset-1">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
+    <div class="col-sm-offset-1">
+
+        <span>
+            <button>@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
+            <button>@Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) </button>
+        </span>
+        <span class="reviewtext2">
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </span>
+    </div>
+
+</div>
+}
 <table class="table">
     <tr>
         <th>
