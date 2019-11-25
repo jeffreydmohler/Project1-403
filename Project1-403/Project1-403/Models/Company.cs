@@ -24,7 +24,7 @@ namespace Project1_403.Models
         public string CompanyCity { get; set; }
 
         [Required]
-        [StringLength(1, MinimumLength = 15, ErrorMessage = "State should be 1 to 15 characters long.")]
+        [StringLength(15, MinimumLength = 1, ErrorMessage = "State should be 1 to 15 characters long.")]
         [Display(Name = "Company State")]
         public string CompanyState { get; set; }
 
