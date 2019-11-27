@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Project1_403.Models
 {
+    [Table("Company")]
     public class Company
     {
+        [Key]
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Company name should be 1 to 50 characters long.")]
         [Display(Name = "Company Name")]

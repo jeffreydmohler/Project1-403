@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project1_403.DAL;
+
 namespace Project1_403.Controllers
 {
     public class RestaurantsController : Controller
     {
-        public static List<Restaurant> lstRestaurant = new List<Restaurant>()
+        private RestaurantContext db = new RestaurantContext();
+
+       /* public static List<Restaurant> lstRestaurant = new List<Restaurant>()
         {
             new Restaurant{
                 RestCode = 1,
@@ -52,17 +56,53 @@ namespace Project1_403.Controllers
                 RestCity = "Provo",
                 RestState = "UT",
                 RestZipCode = "84604"   }
-        };
+        };*/
         // GET: Resturant
         public ActionResult Index()
         {
-            return View(lstRestaurant);
+            // return View(lstRestaurant);
+            return View(db.restaurants.ToList());
         }
         // GET: Resturant/Details/5
         public ActionResult Details(int iCode)
         {
-            Restaurant oRestaurant = lstRestaurant.Find(x => x.RestCode == iCode);
-            return View(oRestaurant);
+            //Restaurant oRestaurant = lstRestaurant.Find(x => x.RestCode == iCode);
+            //return View(oRestaurant);
+            return View();
+        }
+
+        public ActionResult Search()
+        {
+            ViewBag.Search = "Search for a Restaurant";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Search(string userEntry)
+        {
+            List<Restaurant> lstRests = db.restaurants.ToList();
+
+            if (userEntry != "")
+            {
+                Restaurant oRestaurant = lstRests.Find(x => x.RestName == userEntry);
+
+                if (oRestaurant != null)
+                {
+                    return RedirectToAction("ShowReviews", "Reviews", new { iCode = oRestaurant.RestCode });
+                }
+                else
+                {
+                    bool isError = true;
+                    return RedirectToAction("Index", "Home", new { Error = isError});
+                }
+            }
+            else
+            {
+                ViewBag.Search = "Search for a Restaurant";
+                return RedirectToAction("Index", "Home");
+            }
+
+            
         }
     }
 }

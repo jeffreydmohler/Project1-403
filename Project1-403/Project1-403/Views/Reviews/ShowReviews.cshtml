@@ -66,7 +66,8 @@
             </tr>
         </table>
         <span class="reviewtext2">
-            @Html.DisplayFor(modelItem => item.ReviewDate)
+            @{ var parameter = item.ReviewDate.ToShortDateString();}
+            @Html.DisplayFor(modelItem => parameter)
         </span>
     </div>
 

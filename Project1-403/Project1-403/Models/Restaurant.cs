@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Project1_403.Models
 {
+    [Table("Restaurant")]
     public class Restaurant
     {
-        [Required]
-        
+        [Key]
+        [Required] 
         [Display(Name = "Restaurant Code")]
         public int RestCode { get; set; }
 
@@ -21,7 +23,7 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Overall Rating")]
-        public double RestOverallRating { get; set; }
+        public decimal RestOverallRating { get; set; }
 
         [Required]
         [Display(Name = "Date friendly?")]
@@ -30,7 +32,7 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Cleanliness rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Cleanliness Rating")]
-        public float RestCleanliness { get; set; }
+        public decimal RestCleanliness { get; set; }
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant type code should be 2 to 5 characters long.")]

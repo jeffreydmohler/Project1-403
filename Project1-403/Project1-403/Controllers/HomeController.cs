@@ -8,8 +8,18 @@ namespace Project1_403.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(bool? Error)
         {
+            if (Error == true)
+            {
+                ViewBag.Search = "";
+                ViewBag.Error = "Could not find restaurant. Please try again.";
+            }
+            else
+            {
+                ViewBag.Error = "";
+                ViewBag.Search = "Search for a Restaurant";
+            }
             return View();
         }
 
