@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Project1_403.DAL;
+using System.Net;
+using System.Data.Entity;
 
 namespace Project1_403.Controllers
 {
@@ -53,7 +55,7 @@ namespace Project1_403.Controllers
               return View(model);
           }
 
-        public ActionResult AddReview(int iCode)
+        public ActionResult AddReview(int? iCode)
         {
 
             ViewBag.ListRests = db.restaurants.ToList();
@@ -81,31 +83,76 @@ namespace Project1_403.Controllers
             }
         }
 
-        public ActionResult EditReview(int iCode)
+        public ActionResult EditReview(int? iCode)
         {
             ViewBag.ListRests = db.restaurants.ToList();
 
-            Review oReview = db.reviews.ToList().Find(x => x.ReviewCode == iCode);
-
+            if (iCode == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Review oReview = db.reviews.Find(iCode);
+            if (oReview == null)
+            {
+                return HttpNotFound();
+            }
             return View(oReview);
         }
 
         [HttpPost]
-        public ActionResult EditReview(Review myReview)
+        [ValidateAntiForgeryToken]
+        public ActionResult EditReview([Bind(Include = "ReviewCode, RestCode, ReviewOverallRating, ReviewDateFriendly, ReviewCleanliness, ReviewDate, ReviewDesc")] Review oReview)
         {
-            var obj = db.reviews.ToList().FirstOrDefault(x => x.ReviewCode == myReview.ReviewCode);
-
-            if (obj != null)
+            if (ModelState.IsValid)
             {
-                obj.ReviewCleanliness = myReview.ReviewCleanliness;
-                obj.RestCode = myReview.RestCode;
-                obj.ReviewDate = myReview.ReviewDate;
-                obj.ReviewDateFriendly = myReview.ReviewDateFriendly;
-                obj.ReviewOverallRating = myReview.ReviewOverallRating;
-                obj.ReviewDesc = myReview.ReviewDesc;
+                db.Entry(oReview).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ShowReviews", new { iCode = oReview.RestCode });
             }
-            return RedirectToAction("ShowReviews", new { iCode = myReview.RestCode });
+            return View(oReview);
         }
 
+        //[HttpPost]
+        //public ActionResult EditReview(Review myReview)
+        //{
+        //    var obj = db.reviews.ToList().FirstOrDefault(x => x.ReviewCode == myReview.ReviewCode);
+
+        //    if (obj != null)
+        //    {
+        //        obj.ReviewCleanliness = myReview.ReviewCleanliness;
+        //        obj.RestCode = myReview.RestCode;
+        //        obj.ReviewDate = myReview.ReviewDate;
+        //        obj.ReviewDateFriendly = myReview.ReviewDateFriendly;
+        //        obj.ReviewOverallRating = myReview.ReviewOverallRating;
+        //        obj.ReviewDesc = myReview.ReviewDesc;
+        //    }
+        //    return RedirectToAction("ShowReviews", new { iCode = myReview.RestCode });
+        //}
+
+        // GET: Clients/Delete/5
+        public ActionResult Delete(int? iCode)
+        {
+            if (iCode == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Review review = db.reviews.Find(iCode);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
+
+        // POST: Clients/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int iCode)
+        {
+            Review review = db.reviews.Find(iCode);
+            db.reviews.Remove(review);
+            db.SaveChanges();
+            return RedirectToAction("ShowReviews", new { iCode = review.RestCode });
+        }
     }
 }

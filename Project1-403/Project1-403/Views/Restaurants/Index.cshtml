@@ -80,14 +80,10 @@
                         @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
                     </td>
                     <td>
-                        <button class="btn-block">
-                            @Html.ActionLink("Reviews", "ShowReviews", "Reviews", new { iCode = item.RestCode }, null)
-                        </button>
+                        <button class="btn-block" onclick="location.href='@Url.Action("ShowReviews", "Reviews", new { iCode = item.RestCode })'">Reviews</button>
                     </td>
                     <td>
-                        <button class="btn-block">
-                            @Html.ActionLink("Details", "Details", new { iCode = item.RestCode })
-                        </button>
+                        <button class="btn-block" onclick="location.href='@Url.Action("Details", new { iCode = item.RestCode })'">Details</button>
                     </td>
                 </tr>
             }

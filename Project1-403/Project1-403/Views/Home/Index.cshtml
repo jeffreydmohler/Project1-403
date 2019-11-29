@@ -24,20 +24,20 @@
 
 <div class="row">
     <div id="homebox" class="col-md-3 jumbotron">
-        <h2>See Reviews</h2>
+        <h2>Restaurants</h2>
         <p>
-            Stuff
+            Click here to view all current restaurants
         </p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Reviews", "ShowReviews", "Reviews")</button></p>
+        <p><button class="btn-block" style="font-size: 17px;"  onclick="location.href='@Url.Action("Index", "Restaurants")'">Go</button></p>
     </div>
     <div id="homebox" class="col-md-4 jumbotron">
         <h2>Add Review</h2>
-        <p>Put in a review!</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Review", "AddReview", "Reviews")</button></p>
+        <p>Click here to write your own review on any participating restaurant</p>
+        <p><button class="btn-block" style="font-size: 17px;" onclick="location.href='@Url.Action("AddReview", "Reviews")'">Go</button></p>
     </div>
     <div id="homebox" class="col-md-3 jumbotron">
-        <h2>Restaurants</h2>
-        <p>Even more stuff</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Learn More", "AddReview", "Reviews")</button></p>
+        <h2>Our Company</h2>
+        <p>Learn more about our company!</p>
+        <p><button class="btn-block" style="font-size: 17px;"  onclick="location.href='@Url.Action("About")'">Go</button></p>
     </div>
 </div>

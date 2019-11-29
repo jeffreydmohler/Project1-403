@@ -34,7 +34,7 @@
 
 </div>
 <h2>Reviews </h2>
-<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block" style="width: 175px;">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
+<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block" style="width: 175px;" onclick="location.href='@Url.Action("AddReview", new { iCode = Model.Item1.RestCode })'">Add a Review</button></div>
 <br />
 
 @foreach (var item in Model.Item2)
@@ -57,9 +57,9 @@
 
         <table class="col-sm-2 col-sm-offset-8 ">
             <tr>
-                <td><button class="btn-block">@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
+                <td><button class="btn-block" onclick="location.href='@Url.Action("Delete", new { iCode = item.ReviewCode })'">Delete</button>
                     </td>
-                <td><button class="btn-block">@Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) </button>
+                <td><button class="btn-block" onclick="location.href='@Url.Action("EditReview", new { iCode = item.ReviewCode })'">Edit</button>
                 </td>
                 
                 
