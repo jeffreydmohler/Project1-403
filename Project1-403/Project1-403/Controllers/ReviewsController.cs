@@ -55,6 +55,7 @@ namespace Project1_403.Controllers
               return View(model);
           }
 
+        [Authorize]
         public ActionResult AddReview(int? iCode)
         {
 
@@ -83,6 +84,7 @@ namespace Project1_403.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult EditReview(int? iCode)
         {
             ViewBag.ListRests = db.restaurants.ToList();
@@ -112,24 +114,9 @@ namespace Project1_403.Controllers
             return View(oReview);
         }
 
-        //[HttpPost]
-        //public ActionResult EditReview(Review myReview)
-        //{
-        //    var obj = db.reviews.ToList().FirstOrDefault(x => x.ReviewCode == myReview.ReviewCode);
-
-        //    if (obj != null)
-        //    {
-        //        obj.ReviewCleanliness = myReview.ReviewCleanliness;
-        //        obj.RestCode = myReview.RestCode;
-        //        obj.ReviewDate = myReview.ReviewDate;
-        //        obj.ReviewDateFriendly = myReview.ReviewDateFriendly;
-        //        obj.ReviewOverallRating = myReview.ReviewOverallRating;
-        //        obj.ReviewDesc = myReview.ReviewDesc;
-        //    }
-        //    return RedirectToAction("ShowReviews", new { iCode = myReview.RestCode });
-        //}
 
         // GET: Clients/Delete/5
+        [Authorize]
         public ActionResult Delete(int? iCode)
         {
             if (iCode == null)

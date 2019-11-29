@@ -19,5 +19,6 @@ namespace Project1_403.DAL
         public DbSet<Restaurant> restaurants { get; set; }
         public DbSet<RestaurantType> restaurantTypes { get; set; }
         public DbSet<Review> reviews { get; set; }
+        public DbSet<Users> users { get; set; }
     }
 }

@@ -139,6 +139,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantType.cs" />
     <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +191,8 @@
     <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Reviews\EditReview.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
