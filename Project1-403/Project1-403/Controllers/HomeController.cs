@@ -80,7 +80,23 @@ namespace Project1_403.Controllers
 
         public ActionResult CreateUser()
         {
-            return View("Login");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateUser(Users newUser)
+        {
+            if (ModelState.IsValid)
+            {
+                db.users.Add(newUser);
+                db.SaveChanges();
+
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return View(newUser);
+            }
         }
     }
 }

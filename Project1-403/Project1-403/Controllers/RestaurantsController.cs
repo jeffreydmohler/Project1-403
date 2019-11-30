@@ -68,7 +68,8 @@ namespace Project1_403.Controllers
         {
             //Restaurant oRestaurant = lstRestaurant.Find(x => x.RestCode == iCode);
             //return View(oRestaurant);
-            return View();
+            Restaurant oRestaurant = db.restaurants.Find(iCode);
+            return View(oRestaurant);
         }
 
         public ActionResult Search()

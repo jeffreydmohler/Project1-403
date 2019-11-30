@@ -13,6 +13,7 @@ namespace Project1_403.Models
         [Key]
         [Required(ErrorMessage = "Please enter email address")]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string UserEmail { get; set; }
 
         [Required (ErrorMessage = "Please enter a First Name")]
@@ -25,10 +26,12 @@ namespace Project1_403.Models
 
         [Required(ErrorMessage = "Please enter password")]
         [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string UserPassword { get; set; }
 
         [Required(ErrorMessage = "Please enter password again")]
         [DataType(DataType.Password)]
+        [Display(Name = "Please Re-enter Password")]
         [Compare("UserPassword", ErrorMessage = "Passwords must match. Try again")]
         public string ComparePassword { get; set; }
     }

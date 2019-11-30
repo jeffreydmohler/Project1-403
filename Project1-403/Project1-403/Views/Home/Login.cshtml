@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Project1_403.Models.Users
+
+@{
     ViewBag.Title = "Login";
 }
 
@@ -31,4 +33,6 @@
 }
 <br />
 Note: Users must be logged in to add, edit, or delete reviews from the website.
+<br /><br />
+Don't have an account? @Html.ActionLink("Click here", "CreateUser") to create an account.
 
