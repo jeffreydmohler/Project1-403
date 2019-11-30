@@ -4,6 +4,18 @@
     ViewBag.Title = "Details";
 }
 
+@{ var datef = "";
+    if (Model.RestDateFriendly == true)
+    {
+        datef = "&#10004;";
+    }
+    else
+    {
+        datef = "&#120299;";
+    }
+
+}
+
 <div id="detailsjumbo" class="jumbotron maintableparent">
     <br />
     <div class="container h-100">
@@ -17,14 +29,6 @@
 <div>
     <hr />
     <dl class="container1">
-        <dt>
-            @Html.DisplayNameFor(model => model.RestCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RestCode)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.RestName)
         </dt>
@@ -46,7 +50,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestDateFriendly)
+            @Html.Raw((string)@datef) datef
         </dd>
 
         <dt>
@@ -62,7 +66,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestTypeCode)
+            @Html.DisplayFor(model => model.RestaurantType.RestTypeDesc)
         </dd>
 
         <dt>
@@ -70,7 +74,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestFoodTypeCode)
+            @Html.DisplayFor(model => model.FoodType.FoodTypeDesc)
         </dd>
 
         <dt>
@@ -94,34 +98,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RestCity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RestCity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RestState)
-        </dt>
-
-        <dd>
+            @Html.DisplayFor(model => model.RestAddress),
+            @Html.DisplayFor(model => model.RestCity),
             @Html.DisplayFor(model => model.RestState)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RestZipCode)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.RestZipCode)
-        </dd>
-
-    </dl>
+</dl>
 </div>
 <p>
     @Html.ActionLink("Back to All Restaurants", "Index")

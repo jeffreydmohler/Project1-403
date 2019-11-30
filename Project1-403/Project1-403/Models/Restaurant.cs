@@ -36,13 +36,17 @@ namespace Project1_403.Models
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant type code should be 2 to 5 characters long.")]
-        [Display(Name = "Restaurant Type Code")]
+        [Display(Name = "Restaurant Type")]
         public string RestTypeCode { get; set; }
+
+        public virtual RestaurantType RestaurantType { get; set; }
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant tood type code should be 2 to 5 characters long.")]
-        [Display(Name = "Food Type Code")]
+        [Display(Name = "Food Type")]
         public string RestFoodTypeCode { get; set; }
+
+        public virtual FoodType FoodType { get; set; }
 
         [Range(.5, 200, ErrorMessage = "Average price for one meal should be between $.50 and $200.00.")]
         [Display(Name = "Average Meal Price")]

@@ -19,6 +19,8 @@ namespace Project1_403.Models
         [Display(Name = "Restaurant")]
         public int RestCode { get; set; }
 
+        public virtual Restaurant Restaurant { get; set; }
+
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Overall Rating")]

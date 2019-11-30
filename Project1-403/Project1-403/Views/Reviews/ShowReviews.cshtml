@@ -8,11 +8,11 @@
 @{ var datef = "";
     if (Model.Item1.RestDateFriendly == true)
     {
-        datef = "Yes";
+        datef = "&#10004;";
     }
     else
     {
-        datef = "No";
+        datef = "&#120299;";
     }
 
 }
@@ -22,10 +22,10 @@
         <div style="color:#FFFFF0">
             <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
             <div style="font-size: 17px; text-align: left">
-                @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
-                @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestaurantType.RestTypeDesc) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.FoodType.FoodTypeDesc) <br />
                 @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
-                @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
+                @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @Html.Raw((string)@datef)  <br />
                 @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
             </div>
         </div>
@@ -40,19 +40,31 @@
 
 @foreach (var item in Model.Item2)
 {
+
+    var datef2 = "";
+        if (item.ReviewDateFriendly == true)
+        {
+            datef2 = "&#10004;";
+        }
+        else
+        {
+            datef2 = "&#120299;";
+        }
+
+    
     <div class="container1">
 
 
         <br />
-        <span class="reviewtext1">
+        <div class="reviewtext1">
             Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
             &nbsp;
             Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
             &nbsp;
-            Date Friendly? <strong> @datef</strong>
+            Date Friendly? <strong> @Html.Raw((string)@datef2) </strong>
             <br />
             <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
-        </span>
+        </div>
 
         <div class="col-sm-offset-1">
 
@@ -71,7 +83,7 @@
             <span class="reviewtext2">
                 @{ var parameter = item.ReviewDate.ToShortDateString();}
                 @Html.DisplayFor(modelItem => parameter)
-                
+
             </span>
         </div>
 

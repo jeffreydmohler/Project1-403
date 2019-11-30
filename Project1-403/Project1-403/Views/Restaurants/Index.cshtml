@@ -49,11 +49,11 @@
                 var datef = "";
                 if (item.RestDateFriendly == true)
                 {
-                    datef = "Yes";
+                    datef = "&#10004;";
                 }
                 else
                 {
-                    datef = "No";
+                    datef = "&#120299;";
                 }
 
 
@@ -65,16 +65,16 @@
                         @Html.DisplayFor(modelItem => item.RestOverallRating)
                     </td>
                     <td>
-                        @datef
+                        @Html.Raw((string)@datef) 
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.RestCleanliness)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RestTypeCode)
+                        @Html.DisplayFor(modelItem => item.RestaurantType.RestTypeDesc)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RestFoodTypeCode)
+                        @Html.DisplayFor(modelItem => item.FoodType.FoodTypeDesc)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
