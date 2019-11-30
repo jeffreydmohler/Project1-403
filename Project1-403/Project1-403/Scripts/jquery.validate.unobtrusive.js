@@ -217,7 +217,7 @@
                 }
             });
 
-            $.extend(rules, { "__dummy__": true });
+            $.extend(rules, { "__Project1_403__": true });
 
             if (!skipAttach) {
                 valInfo.attachValidation();
@@ -335,7 +335,7 @@
         });
     };
 
-    $jQval.addMethod("__dummy__", function (value, element, params) {
+    $jQval.addMethod("__Project1_403__", function (value, element, params) {
         return true;
     });
 

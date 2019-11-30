@@ -1,4 +1,5 @@
 ﻿@model Tuple<Project1_403.Models.Restaurant, IEnumerable<Project1_403.Models.Review>>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "ShowReviews";
@@ -19,16 +20,16 @@
 <div id="homejumbo" class="jumbotron">
     <div class="container h-100">
         <div style="color:#FFFFF0">
-        <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
-        <div style="font-size: 17px; text-align: left">
-            @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
-            @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
-            @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
-            @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
-            @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+            <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
+            <div style="font-size: 17px; text-align: left">
+                @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
+                @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
+                @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+            </div>
         </div>
     </div>
-</div>
 </div>
 <div>
 
@@ -39,39 +40,42 @@
 
 @foreach (var item in Model.Item2)
 {
-<div class="container1">
+    <div class="container1">
 
-   
-    <br />
-    <span class="reviewtext1">
-        Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
-       &nbsp;
-        Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
-       &nbsp;
-        Date Friendly? <strong> @datef</strong>
+
         <br />
-        <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
-    </span>
-    
-    <div class="col-sm-offset-1">
-
-        <table class="col-sm-2 col-sm-offset-8 ">
-            <tr>
-                <td><button class="btn-block" onclick="location.href='@Url.Action("Delete", new { iCode = item.ReviewCode })'">Delete</button>
-                    </td>
-                <td><button class="btn-block" onclick="location.href='@Url.Action("EditReview", new { iCode = item.ReviewCode })'">Edit</button>
-                </td>
-                
-                
-            </tr>
-        </table>
-        <span class="reviewtext2">
-            @{ var parameter = item.ReviewDate.ToShortDateString();}
-            @Html.DisplayFor(modelItem => parameter)
+        <span class="reviewtext1">
+            Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
+            &nbsp;
+            Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
+            &nbsp;
+            Date Friendly? <strong> @datef</strong>
+            <br />
+            <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
         </span>
-    </div>
 
-</div>
+        <div class="col-sm-offset-1">
+
+            <table class="col-sm-2 col-sm-offset-8 ">
+                <tr>
+                    <td>
+                        <button class="btn-block" onclick="location.href='@Url.Action("Delete", new { iCode = item.ReviewCode })'">Delete</button>
+                    </td>
+                    <td>
+                        <button class="btn-block" onclick="location.href='@Url.Action("EditReview", new { iCode = item.ReviewCode })'">Edit</button>
+                    </td>
+
+
+                </tr>
+            </table>
+            <span class="reviewtext2">
+                @{ var parameter = item.ReviewDate.ToShortDateString();}
+                @Html.DisplayFor(modelItem => parameter)
+                
+            </span>
+        </div>
+
+    </div>
 }
 
 <p>
