@@ -1603,6 +1603,31 @@ pre code {
     margin-right: 20px;
 }
 
+.container2 {
+    height: 100%;
+    width: 800px;
+    float: left;
+}
+
+.container3 {
+    height: 100%;
+    margin-left: 800px;
+    
+}
+
+.review1 {
+    height: 100%;
+    width: 150px;
+    float: left;
+}
+
+.review2 {
+    height: 100%;
+    margin-left: 150px;
+    border-left: 1px solid black;
+    padding-left: 15px;
+}
+
 .reviewtext1 {
     font-size: 17px;
 }

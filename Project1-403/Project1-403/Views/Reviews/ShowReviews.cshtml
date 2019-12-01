@@ -56,17 +56,19 @@
 
 
         <br />
-        <div class="reviewtext1">
+        <div class="reviewtext1 review1">
             Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
-            &nbsp;
-            Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
-            &nbsp;
-            Date Friendly? <strong> @Html.Raw((string)@datef2) </strong>
             <br />
-            <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
+            Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
+            <br />
+            Date Friendly? <strong> @Html.Raw((string)@datef2) </strong>
+            <br /><br />
         </div>
+        <div class="review2">
+            <p @*class="col-lg-offset-1"*@ style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
+        @*</div>
 
-        <div class="col-sm-offset-1">
+        <div class="col-sm-offset-1">*@
 
             <table class="col-sm-2 col-sm-offset-8 ">
                 <tr>

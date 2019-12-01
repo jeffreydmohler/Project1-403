@@ -36,14 +36,14 @@ namespace Project1_403.Models
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant type code should be 2 to 5 characters long.")]
-        [Display(Name = "Restaurant Type")]
+        [Display(Name = "Type of Restaurant")]
         public string RestTypeCode { get; set; }
 
         public virtual RestaurantType RestaurantType { get; set; }
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant tood type code should be 2 to 5 characters long.")]
-        [Display(Name = "Food Type")]
+        [Display(Name = "Type of Food")]
         public string RestFoodTypeCode { get; set; }
 
         public virtual FoodType FoodType { get; set; }

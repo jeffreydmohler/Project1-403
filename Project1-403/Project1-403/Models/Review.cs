@@ -27,7 +27,7 @@ namespace Project1_403.Models
         public decimal ReviewOverallRating { get; set; }
 
         [Required]
-        [Display(Name = "Is restaurant date friendly?")]
+        [Display(Name = "Date Friendly?")]
         public bool? ReviewDateFriendly { get; set; }
 
         [Required]
