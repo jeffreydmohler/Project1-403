@@ -199,6 +199,7 @@
     <Content Include="Content\Images\magnifying-glass-icon_1000x1080.png" />
     <Content Include="Content\Images\Restaurant_Street.jpg" />
     <Content Include="Content\Images\search_glass.png" />
+    <Content Include="Content\Images\stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg" />
     <Content Include="Content\Images\Wonderful-Restaurant-Wallpaper.jpg" />
     <Content Include="Content\Images\WsDu69.jpg" />
     <Content Include="favicon.ico" />
@@ -253,7 +254,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

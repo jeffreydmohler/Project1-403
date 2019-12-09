@@ -49,6 +49,7 @@ namespace Project1_403.Controllers
             return View();
         }
 
+        //The next two methods are for the authentication I used before enabling third party. google is taking care of it now in other controllers
         [HttpPost]
         public ActionResult Login(FormCollection form, bool rememberMe = false)
         {

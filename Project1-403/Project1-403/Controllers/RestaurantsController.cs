@@ -30,27 +30,35 @@ namespace Project1_403.Controllers
             return RedirectToAction("Index");
         }
 
+
+        //this search function works with exact user entry only
         [HttpPost]
         public ActionResult Search(string userEntry)
         {
             List<Restaurant> lstRests = db.restaurants.ToList();
+            //variable to change the default text in search bar if couldn't find restaurant. Sets it to false here to initialize it
+            bool isError = false;
 
             if (userEntry != "")
             {
+                //if there is user entry, try to find the restaurant
                 Restaurant oRestaurant = lstRests.Find(x => x.RestName == userEntry);
 
                 if (oRestaurant != null)
                 {
+                    //if found, send it to that restaurants page
                     return RedirectToAction("ShowReviews", "Reviews", new { iCode = oRestaurant.RestCode });
                 }
                 else
                 {
-                    bool isError = true;
+                    //if not found, change isError, pass it back to the home page. will change default text to "Could not find. please try again."
+                    isError = true;
                     return RedirectToAction("Index", "Home", new { Error = isError});
                 }
             }
             else
             {
+                //if know user entry, just refresh page pretty much
                 ViewBag.Search = "Search for a Restaurant";
                 return RedirectToAction("Index", "Home");
             }

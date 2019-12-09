@@ -55,6 +55,8 @@ namespace Project1_403.Controllers
               return View(model);
           }
 
+        //the rest of this is simple scaffolded code, so not much need for comments
+
         [Authorize]
         public ActionResult AddReview(int? iCode)
         {
@@ -111,6 +113,8 @@ namespace Project1_403.Controllers
                 db.SaveChanges();
                 return RedirectToAction("ShowReviews", new { iCode = oReview.RestCode });
             }
+
+            ViewBag.ListRests = db.restaurants.ToList();
             return View(oReview);
         }
 

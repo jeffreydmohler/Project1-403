@@ -3,12 +3,17 @@
     padding-bottom: 20px;
     color: black;
     background-color: #edeae5 ;
+    font-family:'HP Simplified';
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+h2 {
+    color: black;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -46,7 +51,7 @@ textarea {
     margin-left: -5%;
     margin-right: -5%;
     text-align: center;
-    background-image: url('Images/food-background.jpg');
+    background-image: url('Images/stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg');
     background-position: center;
     background-size: cover;
     margin-top: 10px;
@@ -82,8 +87,8 @@ textarea {
 }
 
 #homebox {
-    background-color: #5a0000;
-    color: white;
+    background-color: #026670 /*#900603 #FFFAF0*/;
+    color: #9d9d9d;
     border-radius: 12px;
     border-color: black;
     border-style: solid;
@@ -91,6 +96,15 @@ textarea {
     margin: .4em;
     display: inline-block;
     width: 32%;
+}
+
+.homecontainer {
+    margin-left: -5%;
+    margin-right: -5%;
+}
+
+.homecontainer1 {
+    padding-left: 15px;
 }
 
 #maintext{
@@ -108,6 +122,7 @@ textarea {
     background-color: white;
     border-radius: 30px;
     padding: 10px;
+    padding-bottom:0px;
     width: 400px;
 }
 
