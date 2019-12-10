@@ -24,7 +24,7 @@
             <div style="font-size: 17px; text-align: left">
                 @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestaurantType.RestTypeDesc) <br />
                 @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.FoodType.FoodTypeDesc) <br />
-                @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
+                @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating) @ViewBag.overall <br />
                 @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @Html.Raw((string)@datef)  <br />
                 @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
             </div>

@@ -54,7 +54,7 @@ namespace Project1_403.Models
 
         [Required]
         [Phone]
-        [StringLength(12, MinimumLength = 7, ErrorMessage = "Phone number should be 7 to 12 characters long.")]
+        [StringLength(20, MinimumLength = 7, ErrorMessage = "Phone number should be 7 to 20 characters long.")]
         [Display(Name = "Phone Number")]
         public string RestPhone { get; set; }
 

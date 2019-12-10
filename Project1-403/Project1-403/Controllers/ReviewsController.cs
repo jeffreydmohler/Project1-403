@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Project1_403.DAL;
 using System.Net;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace Project1_403.Controllers
 {
@@ -30,9 +31,18 @@ namespace Project1_403.Controllers
 
         // GET: Reviews
         public ActionResult ShowReviews(int iCode)
-          {  
+          {
             //find the restaurant object that they clicked on
              Restaurant oRestaurant = db.restaurants.ToList().Find(x => x.RestCode == iCode);
+
+            //finds the current average overall
+            decimal overall = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewOverallRating) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+            oRestaurant.RestOverallRating = overall;
+            decimal cleanliness = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewCleanliness) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+            oRestaurant.RestCleanliness = cleanliness;
+            db.Entry(oRestaurant).State = EntityState.Modified;
+            db.SaveChanges();
+
 
             //list of all the reviews
             List<Review> lstReviews = db.reviews.ToList();
