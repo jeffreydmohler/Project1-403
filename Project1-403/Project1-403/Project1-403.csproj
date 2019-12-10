@@ -194,8 +194,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\downtown-provo-utah-has.jpg" />
     <Content Include="Content\Images\food-background.jpg" />
     <Content Include="Content\Images\food.jpg" />
+    <Content Include="Content\Images\guy.jpg" />
     <Content Include="Content\Images\magnifying-glass-icon_1000x1080.png" />
     <Content Include="Content\Images\Restaurant_Street.jpg" />
     <Content Include="Content\Images\search_glass.png" />

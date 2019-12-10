@@ -12,6 +12,12 @@
     padding-right: 15px;
 }
 
+textarea {
+    font-family: inherit;
+    width: 650px;
+    height: 65px;
+}
+
 h2 {
     color: black;
 }
@@ -32,6 +38,25 @@ textarea {
 
 .navbar {
     background-color: #026670;
+}
+
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    /*height: 300px;*/
+}
+
+.containerabout {
+    border: 2px solid black;
+    background-color: #026670;
+    border-radius: 5px;
+    padding: 16px;
+    padding-bottom: 16px;
+    margin: 16px 0;
+    color: black;
 }
 
 #homeimg {
@@ -65,7 +90,7 @@ textarea {
     margin-left: -5%;
     margin-right: -5%;
     text-align: center;
-    background-image: url('Images/Wonderful-Restaurant-Wallpaper.jpg');
+    background-image: url('Images/downtown-provo-utah-has.jpg');
     background-position: center;
     background-size: cover;
     margin-top: 10px;
@@ -99,12 +124,13 @@ textarea {
 }
 
 .homecontainer {
-    margin-left: -5%;
-    margin-right: -5%;
+    /*margin-left: -5%;
+    margin-right: -5%;*/
 }
 
 .homecontainer1 {
     padding-left: 15px;
+    margin: 15px;
 }
 
 #maintext{

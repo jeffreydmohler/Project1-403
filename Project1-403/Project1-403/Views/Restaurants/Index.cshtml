@@ -5,12 +5,13 @@
         ViewBag.Title = "Index";
     }
 <div id="restjumbo" class="jumbotron maintableparent">
-    <br />
+    <br /> <br />
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
             <h1 style="text-align: right; color: #FFFFF0; font-size: 50px; padding-bottom: 15px;"> Restaurants &nbsp; &nbsp; &nbsp; &nbsp;</h1>
 
         </div>
+        <br />
     </div>
 </div>
 @foreach (var item in Model)
@@ -30,14 +31,20 @@
             <span class="reviewtext1"><strong> @Html.DisplayFor(modelItem => item.RestName) </strong></span>
             <br />
             @Html.DisplayNameFor(model => model.RestTypeCode): @Html.DisplayFor(modelItem => item.RestaurantType.RestTypeDesc)
+            <br />
             @Html.DisplayNameFor(model => model.RestFoodTypeCode): @Html.DisplayFor(modelItem => item.FoodType.FoodTypeDesc)
             <br />
             @Html.DisplayNameFor(model => model.RestOverallRating): @Html.DisplayFor(modelItem => item.RestOverallRating)
-            @Html.DisplayNameFor(model => model.RestDateFriendly): @Html.Raw((string)@datef)
+            &nbsp;&nbsp;
+            @Html.DisplayNameFor(model => model.RestDateFriendly) @Html.Raw((string)@datef)
+            &nbsp;&nbsp;
             @Html.DisplayNameFor(model => model.RestCleanliness): @Html.DisplayFor(modelItem => item.RestCleanliness)
-            @Html.DisplayNameFor(model => model.RestAvgMealPrice): @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+            &nbsp;&nbsp;
+            @Html.DisplayNameFor(model => model.RestAvgMealPrice): $@Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+            <br />
         </div>
         <div class="@*col-sm-offset-1*@ container3">
+            <br />
             <br />
             <br />
             <table class="@*col-sm-2 col-sm-offset-8*@ ">
@@ -52,6 +59,8 @@
 
                 </tr>
             </table>
+            
+            
         </div>
     </div>
 }
