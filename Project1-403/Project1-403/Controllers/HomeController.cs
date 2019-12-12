@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*Creator: Jeffrey Mohler
+Date: 12/11/19
+Description: This is a restaurant review site made for the IS 403 final project. It allows third party authenication as well as use of roles. 
+
+Review CRUD requires any user account.
+Restaurant CRUD requires the Admin role. The admin account is as follows:
+
+username: admin@admin.com
+password: @Adm1n     
+
+ There is also a search bar on home page. The functionality currently only allows exact user entry for it to work. ex. "Wendy's" NOT "wendys"   */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -98,6 +111,12 @@ namespace Project1_403.Controllers
             {
                 return View(newUser);
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Admin()
+        {
+            return View(db.restaurants.ToList());
         }
     }
 }

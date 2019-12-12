@@ -21,7 +21,7 @@ namespace Project1_403.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("RestaurantContext", throwIfV1Schema: false)
         {
         }
 

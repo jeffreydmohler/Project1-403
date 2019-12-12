@@ -35,14 +35,32 @@ namespace Project1_403.Controllers
             //find the restaurant object that they clicked on
              Restaurant oRestaurant = db.restaurants.ToList().Find(x => x.RestCode == iCode);
 
-            //finds the current average overall
-            decimal overall = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewOverallRating) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
-            oRestaurant.RestOverallRating = overall;
-            decimal cleanliness = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewCleanliness) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
-            oRestaurant.RestCleanliness = cleanliness;
-            db.Entry(oRestaurant).State = EntityState.Modified;
-            db.SaveChanges();
+            //finds the current average overall if there are any reviews 
+            if (db.Database.SqlQuery<Review>("Select * from Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault() != null)
+            {
+                //overall
+                decimal overall = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewOverallRating) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+                oRestaurant.RestOverallRating = overall;
+                //cleanliness
+                decimal cleanliness = db.Database.SqlQuery<decimal>("Select Cast(Avg(ReviewCleanliness) AS Decimal(4,2)) From Review Where RestCode = @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+                oRestaurant.RestCleanliness = cleanliness;
 
+                //Date friendly
+                int sum = db.Database.SqlQuery<int>("Select Count(ReviewDateFriendly) From Review Where RestCode =  @iCode AND ReviewDateFriendly = 1", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+                int count = db.Database.SqlQuery<int>("Select Count(ReviewDateFriendly) From Review Where RestCode =  @iCode", new SqlParameter("@iCode", iCode)).FirstOrDefault();
+                double avg = (double)sum / count;
+
+                if (avg > 0.5)
+                {
+                    oRestaurant.RestDateFriendly = true;
+                }
+                else
+                {
+                    oRestaurant.RestDateFriendly = false;
+                }
+                db.Entry(oRestaurant).State = EntityState.Modified;
+                db.SaveChanges();
+            }
 
             //list of all the reviews
             List<Review> lstReviews = db.reviews.ToList();
