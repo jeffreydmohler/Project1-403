@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Project1_403.Models.Review>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewOverallRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDateFriendly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewCleanliness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDesc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.RestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewOverallRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDateFriendly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewCode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReviewCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewCode })
+        </td>
+    </tr>
+}
+
+</table>

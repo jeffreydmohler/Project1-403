@@ -1,0 +1,72 @@
+﻿@model Project1_403.Models.Review
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Restaurant.RestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restaurant.RestName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewOverallRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewOverallRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDateFriendly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDateFriendly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDesc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

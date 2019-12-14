@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,18 +9,21 @@ namespace Project1_403.Models
 {
     public class Review
     {
+        [Key]
         [Required]
         [Display(Name = "Review Code")]
         public int ReviewCode { get; set; }
 
+        [ForeignKey("Restaurant")]
         [Required]
         [Display(Name = "Restaurant Code")]
-        public int RestCode { get; set; }
+        public int RestID { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
 
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Overall Rating")]
-        public double ReviewOverallRating { get; set; }
+        public decimal ReviewOverallRating { get; set; }
 
         [Required]
         [Display(Name = "Is restaruant date friendly?")]
@@ -28,11 +32,11 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Cleanliness rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Restaurant Cleanliness")]
-        public double ReviewCleanliness { get; set; }
+        public decimal ReviewCleanliness { get; set; }
 
         [Required]
         [Display(Name = "Review Date")]
-        public string ReviewDate { get; set; }
+        public DateTime ReviewDate { get; set; }
 
         [StringLength(800, MinimumLength = 4, ErrorMessage = "Reviews should be between 4 to 800 characters long.")]
         [Display(Name = "Review Description")]

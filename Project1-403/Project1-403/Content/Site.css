@@ -1,4 +1,10 @@
-﻿body {
+﻿
+
+root {
+    --primary-site-color: #026670;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     color: black;
@@ -26,7 +32,7 @@ textarea {
 }
 
 .navbar {
-    background-color: #026670;
+    background-color: var(--primary-site-color);
 }
 
 #homeimg {
@@ -82,7 +88,7 @@ textarea {
 }
 
 #homebox {
-    background-color: #5a0000;
+    background-color: var(--primary-site-color);
     color: white;
     border-radius: 12px;
     border-color: black;

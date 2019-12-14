@@ -1,88 +1,133 @@
-﻿using Project1_403.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Project1_403.DAL;
+using Project1_403.Models;
 
 namespace Project1_403.Controllers
 {
     public class ReviewsController : Controller
     {
-        public static List<Review> lstReviews = new List<Review>()
-        {
-            new Review { ReviewCode = 1, RestCode = 1, ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "We had a party of Five hungry adults and one hungry toddler. Three picky eaters too. We happened upon this place. We had intentions of going somewhere else. Decided to try this place and we were beyond thrilled we went. Top notch customer service. They catered to all the picky eaters. It was delicious and such friendly customer service. Loved it!  It's a new favorite."},
-            new Review { ReviewCode = 2, RestCode = 2, ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 3, RestCode = 3, ReviewOverallRating = 5, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 4, RestCode = 1, ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 5, RestCode = 2, ReviewOverallRating = 3, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 6, RestCode = 3, ReviewOverallRating = 4, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 7, RestCode = 1, ReviewOverallRating = 2, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 8, RestCode = 2, ReviewOverallRating = 1, ReviewDateFriendly = false, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-            new Review { ReviewCode = 9, RestCode = 3, ReviewOverallRating = 4, ReviewDateFriendly = true, ReviewCleanliness = 4, ReviewDate = "10/18/18", ReviewDesc = "This is an awesome restaurant"},
-        };
-
+        private RestaurantDBContext db = new RestaurantDBContext();
 
         // GET: Reviews
-        public ActionResult ShowReviews(int iCode)
+        public ActionResult Index()
         {
-            Restaurant oRestaurant = RestaurantsController.lstRestaurant.Find(x => x.RestCode == iCode);
-          
-            var model = Tuple.Create<Restaurant, IEnumerable<Review>>(oRestaurant, lstReviews);
-
-            return View(model);
+            var reviews = db.Reviews.Include(r => r.Restaurant);
+            return View(reviews.ToList());
         }
 
-        public ActionResult AddReview(int iCode)
+        // GET: Reviews/Details/5
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Review review = db.Reviews.Find(id);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
 
-            ViewBag.ListRests = RestaurantsController.lstRestaurant;
-
+        // GET: Reviews/Create
+        public ActionResult Create()
+        {
+            ViewBag.RestID = new SelectList(db.Restaurants, "RestID", "RestName");
             return View();
         }
 
+        // POST: Reviews/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult AddReview(Review newReview)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ReviewCode,RestID,ReviewOverallRating,ReviewDateFriendly,ReviewCleanliness,ReviewDate,ReviewDesc")] Review review)
         {
-            newReview.ReviewCode = (lstReviews.Count() + 1);
-
             if (ModelState.IsValid)
             {
-                lstReviews.Add(newReview);
-                return RedirectToAction("ShowReviews", new { iCode = newReview.RestCode });
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            else
-            {
-                ViewBag.ListRests = RestaurantsController.lstRestaurant;
 
-                return View(newReview);
-            }
+            ViewBag.RestID = new SelectList(db.Restaurants, "RestID", "RestName", review.RestID);
+            return View(review);
         }
 
-        public ActionResult EditReview(int iCode)
+        // GET: Reviews/Edit/5
+        public ActionResult Edit(int? id)
         {
-            ViewBag.ListRests = RestaurantsController.lstRestaurant;
-
-            Review oReview = lstReviews.Find(x => x.ReviewCode == iCode);
-
-            return View(oReview);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Review review = db.Reviews.Find(id);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.RestID = new SelectList(db.Restaurants, "RestID", "RestName", review.RestID);
+            return View(review);
         }
 
+        // POST: Reviews/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult EditReview(Review myReview)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ReviewCode,RestID,ReviewOverallRating,ReviewDateFriendly,ReviewCleanliness,ReviewDate,ReviewDesc")] Review review)
         {
-            var obj = lstReviews.FirstOrDefault(x => x.ReviewCode == myReview.ReviewCode);
-
-            if (obj != null)
+            if (ModelState.IsValid)
             {
-                obj.ReviewCleanliness = myReview.ReviewCleanliness;
-                obj.RestCode = myReview.RestCode;
-                obj.ReviewDate = myReview.ReviewDate;
-                obj.ReviewDateFriendly = myReview.ReviewDateFriendly;
-                obj.ReviewOverallRating = myReview.ReviewOverallRating;
-                obj.ReviewDesc = myReview.ReviewDesc;
+                db.Entry(review).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("ShowReviews", new { iCode = myReview.RestCode });
+            ViewBag.RestID = new SelectList(db.Restaurants, "RestID", "RestName", review.RestID);
+            return View(review);
+        }
+
+        // GET: Reviews/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Review review = db.Reviews.Find(id);
+            if (review == null)
+            {
+                return HttpNotFound();
+            }
+            return View(review);
+        }
+
+        // POST: Reviews/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Review review = db.Reviews.Find(id);
+            db.Reviews.Remove(review);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

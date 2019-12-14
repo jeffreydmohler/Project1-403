@@ -1,0 +1,66 @@
+﻿@model Project1_403.Models.Review
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Restaurant.RestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restaurant.RestName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewOverallRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewOverallRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDateFriendly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDateFriendly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewCleanliness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewCleanliness)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewDesc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

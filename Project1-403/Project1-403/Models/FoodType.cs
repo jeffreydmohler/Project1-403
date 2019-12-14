@@ -8,6 +8,7 @@ namespace Project1_403.Models
 {
     public class FoodType
     {
+        [Key]
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant food type code should be 2 to 5 characters long.")]
         [Display(Name = "Food Type Code")]

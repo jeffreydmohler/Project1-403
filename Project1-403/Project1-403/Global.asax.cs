@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Project1_403.DAL;
+using Project1_403.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,10 +15,14 @@ namespace Project1_403
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<RestaurantDBContext>(null);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            
         }
     }
 }
