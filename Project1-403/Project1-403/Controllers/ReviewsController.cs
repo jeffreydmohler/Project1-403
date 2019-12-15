@@ -18,8 +18,13 @@ namespace Project1_403.Controllers
         // GET: Reviews
         public ActionResult Index(int? id)
         {
+            
+
             var reviews = db.Reviews.Where(r => r.RestID == id).Include(r => r.Restaurant);
-            return View(reviews.ToList());
+
+            var model = Tuple.Create<Restaurant, Review, IEnumerable<Review>>(reviews.First(x => x.RestID == id).Restaurant, reviews.First(x => x.RestID == id), reviews);
+
+            return View(model);
         }
 
         // GET: Reviews/Details/5
