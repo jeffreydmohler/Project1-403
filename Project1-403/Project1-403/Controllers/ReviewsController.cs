@@ -16,9 +16,9 @@ namespace Project1_403.Controllers
         private RestaurantDBContext db = new RestaurantDBContext();
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var reviews = db.Reviews.Include(r => r.Restaurant);
+            var reviews = db.Reviews.Where(r => r.RestID == id).Include(r => r.Restaurant);
             return View(reviews.ToList());
         }
 

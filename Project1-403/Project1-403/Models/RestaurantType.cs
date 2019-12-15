@@ -16,7 +16,7 @@ namespace Project1_403.Models
 
         [Required]
         [StringLength(15, MinimumLength = 2, ErrorMessage = "Restaurant type description should be 2 to 15 characters long.")]
-        [Display(Name = "Restaurant Type Description")]
+        [Display(Name = "Type of Restaurant")]
         public string RestTypeDesc { get; set; }
     }
 }

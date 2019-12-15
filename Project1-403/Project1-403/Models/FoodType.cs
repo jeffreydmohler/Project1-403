@@ -16,7 +16,7 @@ namespace Project1_403.Models
 
         [Required]
         [StringLength(15, MinimumLength = 2, ErrorMessage = "Restaurant food type description should be 2 to 15 characters long.")]
-        [Display(Name = "Food Type Description")]
+        [Display(Name = "Food Type")]
         public string FoodTypeDesc { get; set; }
     }
 }
