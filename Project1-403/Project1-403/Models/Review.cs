@@ -25,7 +25,7 @@ namespace Project1_403.Models
         [Display(Name = "Overall Rating")]
         public decimal ReviewOverallRating { get; set; }
 
-        [Required(ErrorMessage ="The Date Friendly field is required")]
+        [Required]
         [Display(Name = "Is restaruant date friendly?")]
         public bool? ReviewDateFriendly { get; set; }
 
@@ -34,7 +34,7 @@ namespace Project1_403.Models
         [Display(Name = "Restaurant Cleanliness")]
         public decimal ReviewCleanliness { get; set; }
 
-        [Required(ErrorMessage = "Please input date with mm-dd-yyyy format")]
+        [Required]
         [Display(Name = "Review Date")]
         public DateTime ReviewDate { get; set; }
 
