@@ -43,6 +43,7 @@ namespace Project1_403.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.RestID = new SelectList(db.Restaurants, "RestID", "RestName");
@@ -68,6 +69,7 @@ namespace Project1_403.Controllers
         }
 
         // GET: Reviews/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +103,7 @@ namespace Project1_403.Controllers
         }
 
         // GET: Reviews/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
