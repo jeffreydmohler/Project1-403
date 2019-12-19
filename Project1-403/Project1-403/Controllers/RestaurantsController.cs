@@ -22,6 +22,13 @@ namespace Project1_403.Controllers
             return View(restaurants.ToList());
         }
 
+
+        public ActionResult Search(string search)
+        {
+            var restaurants = db.Restaurants.Where(r => r.RestName.Contains(search));
+            return View("Index", restaurants.ToList());
+        }
+
         // GET: Restaurants/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +45,7 @@ namespace Project1_403.Controllers
         }
 
         // GET: Restaurants/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.RestFoodTypeCode = new SelectList(db.FoodTypes, "RestFoodTypeCode", "FoodTypeDesc");
@@ -65,6 +73,7 @@ namespace Project1_403.Controllers
         }
 
         // GET: Restaurants/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)

@@ -18,9 +18,15 @@ namespace Project1_403.Controllers
         // GET: Reviews
         public ActionResult Index(int? id)
         {
-            
+            //Used after new review/restaurant is created.
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var reviews = db.Reviews.Where(r => r.RestID == id).Include(r => r.Restaurant);
+
+            
 
             var model = Tuple.Create<Restaurant, Review, IEnumerable<Review>>(reviews.First(x => x.RestID == id).Restaurant, reviews.First(x => x.RestID == id), reviews);
 

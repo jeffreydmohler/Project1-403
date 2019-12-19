@@ -5,6 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+/********
+    Project 2 - IS-403
+    Eric Louis
+    12/14/2019
+
+    Designed to compile restaurants and reviews associated with the restaurants.
+    Has Google OAuth enabled.
+    Combined with DB functionality.
+
+
+
+ ********/
+
+
 namespace Project1_403.Controllers
 {
     public class HomeController : Controller
@@ -16,41 +30,17 @@ namespace Project1_403.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This is who we are.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "This is how to contact us.";
 
             return View();
         }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Login(FormCollection form, bool rememberMe = false)
-        {
-            String email = form["Email address"].ToString();
-            String password = form["Password"].ToString();
-
-            if (string.Equals(email, "greg@test.com") && (string.Equals(password, "greg")))
-            {
-                FormsAuthentication.SetAuthCookie(email, rememberMe);
-
-                return RedirectToAction("Index", "Home");
-
-            }
-            else
-            {
-                return View();
-            }
-        }
+        
     }
 }

@@ -8,9 +8,34 @@
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
             <h1 style="text-align: left; color: white; font-size: 50px;"> What's on the Table?</h1>
-            <div class="searchbar" >
-                <input class="search_input" type="text" name="" placeholder="What's On The Menu?">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <div class="searchbar">
+                @using (Html.BeginForm("Search", "Restaurants", FormMethod.Get))
+                {
+                    <input class="search_input" type="text" name="search" placeholder="Search For Restaurant">
+                    <input type="submit" value="" class="search_icon">
+                }
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div id="homebox" class="col-md-3 jumbotron">
+                <h2>See Restaurants</h2>
+                <p>
+                    See all the Restaurants that we serve!
+                </p>
+                <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Restaurants", "Index", "Restaurants")</button></p>
+            </div>
+            <div id="homebox" class="col-md-4 jumbotron">
+                <h2>Add Review</h2>
+                <p>Put in a review!</p>
+                <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Review", "Create", "Reviews")</button></p>
+            </div>
+            <div id="homebox" class="col-md-3 jumbotron">
+                <h2>Add Restaurants</h2>
+                <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Restaurant", "Create", "Restaurants")</button></p>
             </div>
         </div>
     </div>
@@ -18,22 +43,3 @@
 
 
 
-<div class="row">
-    <div id="homebox" class="col-md-3 jumbotron">
-        <h2>See Restaurants</h2>
-        <p>
-            See all the Restaurants that we serve!
-        </p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Restaurants", "Index", "Restaurants")</button></p>
-    </div>
-    <div id="homebox" class="col-md-4 jumbotron">
-        <h2>Add Review</h2>
-        <p>Put in a review!</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Review", "Create", "Reviews")</button></p>
-    </div>
-    <div id="homebox" class="col-md-3 jumbotron">
-        <h2>Restaurants</h2>
-        <p>Even more stuff</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Learn More", "AddReview", "Reviews")</button></p>
-    </div>
-</div>

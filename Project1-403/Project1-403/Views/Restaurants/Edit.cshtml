@@ -1,10 +1,10 @@
 ﻿@model Project1_403.Models.Restaurant
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Restaurant";
 }
 
-<h2>Edit</h2>
+<h2>Edit Restaurant</h2>
 
 
 @using (Html.BeginForm())
@@ -124,7 +124,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {

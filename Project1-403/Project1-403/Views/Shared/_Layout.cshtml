@@ -27,12 +27,10 @@
                     <li>@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    
+
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Reviews", "ShowReviews", "Reviews")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                </ul>
+                
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
