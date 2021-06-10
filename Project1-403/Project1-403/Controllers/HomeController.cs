@@ -8,7 +8,7 @@ Restaurant CRUD requires the Admin role. The admin account is as follows:
 username: admin@admin.com
 password: @Adm1n     
 
- There is also a search bar on home page. The functionality currently only allows exact user entry for it to work. ex. "Wendy's" NOT "wendys"   */
+There is also a search bar on home page. The functionality currently only allows exact user entry for it to work. ex. "Wendy's" NOT "wendys"   */
 
 
 using System;
