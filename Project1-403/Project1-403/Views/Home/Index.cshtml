@@ -1,39 +1,51 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<body>
 
+    <div id="homejumbo" class="jumbotron maintableparent">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <h1 style="text-align: left; color: white; font-size: 50px; font-family: 'HP Simplified';"> What's on the Table?</h1>
+                
+                @using (Html.BeginForm("Search", "Restaurants", FormMethod.Post))
+                {
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="userEntry" placeholder="@ViewBag.Search@ViewBag.Error">
+                        <input type="submit" class="search_icon" value=""><i class="fas fa-search"></i>
 
-<div id="homejumbo" class="jumbotron maintableparent">
-    <br />
-    <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
-            <h1 style="text-align: left; color: white; font-size: 50px;"> What's on the Table?</h1>
-            <div class="searchbar" >
-                <input class="search_input" type="text" name="" placeholder="What's On The Menu?">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                    </div>
+                }
             </div>
+           
         </div>
     </div>
-</div>
 
 
 
-<div class="row">
-    <div id="homebox" class="col-md-3 jumbotron">
-        <h2>See Reviews</h2>
-        <p>
-            Stuff
-        </p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Reviews", "ShowReviews", "Reviews")</button></p>
+    <div class="row homecontainer">
+        <div id="homebox" class="col-md-4 jumbotron homecontainer1">
+            <h2>Restaurants</h2>
+            <p>
+                Click here to view all current restaurants
+            </p>
+            <p><button class="btn-block" style="font-size: 17px;" onclick="location.href='@Url.Action("Index", "Restaurants")'">Go</button></p>
+        </div>
+        
+        <div id="homebox" class="col-md-4 jumbotron homecontainer1">
+            <h2>Add Review</h2>
+            <p>Write your own review for participating restaurants</p>
+            <p><button class="btn-block" style="font-size: 17px;" onclick="location.href='@Url.Action("AddReview", "Reviews")'">Go</button></p>
+        </div>
+        <div id="homebox" class="col-md-4 jumbotron homecontainer1">
+            <h2>Our Company</h2>
+            <p>Learn more about our company!</p>
+            <p><button class="btn-block" style="font-size: 17px;" onclick="location.href='@Url.Action("About")'">Go</button></p>
+        </div>
     </div>
-    <div id="homebox" class="col-md-4 jumbotron">
-        <h2>Add Review</h2>
-        <p>Put in a review!</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Add Review", "AddReview", "Reviews")</button></p>
-    </div>
-    <div id="homebox" class="col-md-3 jumbotron">
-        <h2>Restaurants</h2>
-        <p>Even more stuff</p>
-        <p><button class="btn-block" style="font-size: 17px;">@Html.ActionLink("Learn More", "AddReview", "Reviews")</button></p>
-    </div>
-</div>
+</body>

@@ -1,4 +1,5 @@
 ﻿@model Tuple<Project1_403.Models.Restaurant, IEnumerable<Project1_403.Models.Review>>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "ShowReviews";
@@ -7,11 +8,11 @@
 @{ var datef = "";
     if (Model.Item1.RestDateFriendly == true)
     {
-        datef = "Yes";
+        datef = "&#10004;";
     }
     else
     {
-        datef = "No";
+        datef = "&#120299;";
     }
 
 }
@@ -19,58 +20,76 @@
 <div id="homejumbo" class="jumbotron">
     <div class="container h-100">
         <div style="color:#FFFFF0">
-        <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
-        <div style="font-size: 17px; text-align: left">
-            @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestTypeCode) <br />
-            @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.RestFoodTypeCode) <br />
-            @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating)  <br />
-            @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @datef  <br />
-            @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+            <h1>@Html.DisplayFor(model => model.Item1.RestName)</h1>
+            <div style="font-size: 17px; text-align: left">
+                @Html.DisplayNameFor(model => model.Item1.RestTypeCode): @Html.DisplayFor(model => model.Item1.RestaurantType.RestTypeDesc) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestFoodTypeCode): @Html.DisplayFor(model => model.Item1.FoodType.FoodTypeDesc) <br />
+                @Html.DisplayNameFor(model => model.Item1.RestOverallRating): @Html.DisplayFor(model => model.Item1.RestOverallRating) @ViewBag.overall <br />
+                @Html.DisplayNameFor(model => model.Item1.RestDateFriendly) @Html.Raw((string)@datef)  <br />
+                @Html.DisplayNameFor(model => model.Item1.RestCleanliness): @Html.DisplayFor(model => model.Item1.RestCleanliness)
+            </div>
         </div>
     </div>
-</div>
 </div>
 <div>
 
 </div>
 <h2>Reviews </h2>
-<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block" style="width: 175px;">@Html.ActionLink("Add a Review", "AddReview", new { iCode = Model.Item1.RestCode })</button></div>
+<div class="col-sm-2 col-sm-offset-10 " style="text-align: right"><button class="btn-block" style="width: 175px;" onclick="location.href='@Url.Action("AddReview", new { iCode = Model.Item1.RestCode })'">Add a Review</button></div>
 <br />
 
 @foreach (var item in Model.Item2)
 {
-<div class="container1">
 
-   
-    <br />
-    <span class="reviewtext1">
-        Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
-       &nbsp;
-        Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
-       &nbsp;
-        Date Friendly? <strong> @datef</strong>
-        <br />
-        <p class="col-lg-offset-1" style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
-    </span>
+    var datef2 = "";
+        if (item.ReviewDateFriendly == true)
+        {
+            datef2 = "&#10004;";
+        }
+        else
+        {
+            datef2 = "&#120299;";
+        }
+
     
-    <div class="col-sm-offset-1">
+    <div class="container1">
 
-        <table class="col-sm-2 col-sm-offset-8 ">
-            <tr>
-                <td><button class="btn-block">@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
+
+        <br />
+        <div class="reviewtext1 review1">
+            Rating: <strong> @Html.DisplayFor(modelItem => item.ReviewOverallRating)</strong>
+            <br />
+            Cleanliness: <strong> @Html.DisplayFor(modelItem => item.ReviewCleanliness)</strong>
+            <br />
+            Date Friendly? <strong> @Html.Raw((string)@datef2) </strong>
+            <br /><br />
+        </div>
+        <div class="review2">
+            <p @*class="col-lg-offset-1"*@ style="font-size: 15px;">"@Html.DisplayFor(modelItem => item.ReviewDesc)" </p>
+        @*</div>
+
+        <div class="col-sm-offset-1">*@
+
+            <table class="col-sm-2 col-sm-offset-8 ">
+                <tr>
+                    <td>
+                        <button class="btn-block" onclick="location.href='@Url.Action("Delete", new { iCode = item.ReviewCode })'">Delete</button>
                     </td>
-                <td><button class="btn-block">@Html.ActionLink("Edit", "EditReview", new { iCode = item.ReviewCode }) </button>
-                </td>
-                
-                
-            </tr>
-        </table>
-        <span class="reviewtext2">
-            @Html.DisplayFor(modelItem => item.ReviewDate)
-        </span>
-    </div>
+                    <td>
+                        <button class="btn-block" onclick="location.href='@Url.Action("EditReview", new { iCode = item.ReviewCode })'">Edit</button>
+                    </td>
 
-</div>
+
+                </tr>
+            </table>
+            <span class="reviewtext2">
+                @{ var parameter = item.ReviewDate.ToShortDateString();}
+                @Html.DisplayFor(modelItem => parameter)
+
+            </span>
+        </div>
+
+    </div>
 }
 
 <p>

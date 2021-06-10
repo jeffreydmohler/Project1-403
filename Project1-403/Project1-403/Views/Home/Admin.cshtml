@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Project1_403.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Manage Restaurants</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Restaurants")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodType.FoodTypeDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantType.RestTypeDesc)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RestOverallRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestDateFriendly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestCleanliness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestAvgMealPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestAddress)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var datef = "";
+        if (item.RestDateFriendly == true)
+        {
+            datef = "&#10004;";
+        }
+        else
+        {
+            datef = "&#120299;";
+        }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodType.FoodTypeDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestaurantType.RestTypeDesc)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.RestOverallRating)
+        </td>
+        <td>
+            @Html.Raw((string)@datef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestCleanliness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestAvgMealPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestAddress),
+            @Html.DisplayFor(modelItem => item.RestCity),
+            @Html.DisplayFor(modelItem => item.RestState)
+            @Html.DisplayFor(modelItem => item.RestZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Restaurants", new { id = item.RestCode }, null) |
+            @Html.ActionLink("Delete", "Delete", "Restaurants", new { id = item.RestCode }, null)
+        </td>
+    </tr>
+    }
+
+</table>
+

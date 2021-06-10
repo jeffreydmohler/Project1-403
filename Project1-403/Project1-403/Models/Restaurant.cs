@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Project1_403.Models
 {
+    [Table("Restaurant")]
     public class Restaurant
     {
-        [Required]
-        
+        [Key]
+        [Required] 
         [Display(Name = "Restaurant Code")]
         public int RestCode { get; set; }
 
@@ -21,7 +23,7 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Overall rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Overall Rating")]
-        public double RestOverallRating { get; set; }
+        public decimal RestOverallRating { get; set; }
 
         [Required]
         [Display(Name = "Date friendly?")]
@@ -30,17 +32,21 @@ namespace Project1_403.Models
         [Required]
         [Range(0, 5, ErrorMessage = "Cleanliness rating can be a minimum of 0 stars and a maximum of 5 stars.")]
         [Display(Name = "Cleanliness Rating")]
-        public float RestCleanliness { get; set; }
+        public decimal RestCleanliness { get; set; }
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant type code should be 2 to 5 characters long.")]
-        [Display(Name = "Restaurant Type Code")]
+        [Display(Name = "Type of Restaurant")]
         public string RestTypeCode { get; set; }
+
+        public virtual RestaurantType RestaurantType { get; set; }
 
         [Required]
         [StringLength(5, MinimumLength = 2, ErrorMessage = "Restaurant tood type code should be 2 to 5 characters long.")]
-        [Display(Name = "Food Type Code")]
+        [Display(Name = "Type of Food")]
         public string RestFoodTypeCode { get; set; }
+
+        public virtual FoodType FoodType { get; set; }
 
         [Range(.5, 200, ErrorMessage = "Average price for one meal should be between $.50 and $200.00.")]
         [Display(Name = "Average Meal Price")]
@@ -48,7 +54,7 @@ namespace Project1_403.Models
 
         [Required]
         [Phone]
-        [StringLength(12, MinimumLength = 7, ErrorMessage = "Phone number should be 7 to 12 characters long.")]
+        [StringLength(20, MinimumLength = 7, ErrorMessage = "Phone number should be 7 to 20 characters long.")]
         [Display(Name = "Phone Number")]
         public string RestPhone { get; set; }
 
@@ -63,7 +69,7 @@ namespace Project1_403.Models
         public string RestCity { get; set; }
 
         [Required]
-        [StringLength(1, MinimumLength = 15, ErrorMessage = "State should be 1 to 15 characters long.")]
+        [StringLength(15, MinimumLength = 1, ErrorMessage = "State should be 1 to 15 characters long.")]
         [Display(Name = "State")]
         public string RestState { get; set; }
 

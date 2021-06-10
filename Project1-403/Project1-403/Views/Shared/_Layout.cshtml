@@ -26,12 +26,20 @@
                     <li>@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+
+                        {
+                            <li>@Html.ActionLink("Admin", "Admin", "Home")</li>
+                        }
+                    }
+
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Reviews", "ShowReviews", "Reviews")</li>
-                    <li>@Html.ActionLink("Login", "Contact", "Home")</li>
-                </ul>
+                @Html.Partial("_LoginPartial")
+                @*<ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Login", "Login", "Home")</li>
+        </ul>*@
             </div>
         </div>
     </div>
